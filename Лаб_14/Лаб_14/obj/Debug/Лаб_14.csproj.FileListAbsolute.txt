@@ -1,0 +1,10 @@
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\bin\Debug\Лаб_14.exe.config
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\bin\Debug\Лаб_14.exe
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\bin\Debug\Лаб_14.pdb
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.csprojAssemblyReference.cache
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.Properties.Resources.resources
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.csproj.GenerateResource.cache
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.csproj.CoreCompileInputs.cache
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.exe
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.pdb
+E:\College\Last_courses\3rd_course\Прикладное Программирование (C#)\Программы\Лаб_14\Лаб_14\Лаб_14\obj\Debug\Лаб_14.Form1.resources
