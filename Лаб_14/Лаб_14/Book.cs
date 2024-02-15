@@ -12,6 +12,7 @@ namespace Лаб_14
     [Serializable]
     class Book : IComparable
     {
+        //поля класса - данные объекта
         private int inventoryNumber;
         private byte[] author;
         private byte[] nameOfBook;
@@ -20,8 +21,8 @@ namespace Лаб_14
         private int pages;
 
         [NonSerialized]
-        //не публичной сделать константу
-        public const int max_length = 20;
+        const int max_length = 20;
+        const int correctionIndex = sizeof(int) * 3 + max_length * 3;
         static Encoding encoding = System.Text.Encoding.GetEncoding(1251);
 
         /// <summary>
@@ -58,7 +59,16 @@ namespace Лаб_14
         }
         
         /// <summary>
-        /// Конструктор объекта
+        /// Получение длины кол-ва символов, содержащихся в 1 сериализуемом объекте
+        /// </summary>
+        /// <returns></returns>
+        public static int GetCorrectionIndex()
+        {
+            return correctionIndex;
+        }
+
+        /// <summary>
+        /// Конструктор объекта Book
         /// </summary>
         /// <param name="inventoryNumber">Инфентарный номер</param>
         /// <param name="author">Автор книги</param>
@@ -77,7 +87,7 @@ namespace Лаб_14
         }
 
         /// <summary>
-        /// Метод добавления объекта Book в бинарный файл
+        /// Добавление объекта Book в конец бинарного файла
         /// </summary>
         /// <param name="filename">Путь к бинарному файлу</param>
         public void Add(string filename)
@@ -99,20 +109,70 @@ namespace Лаб_14
             }
         }
 
-        //метод вывода в таблицу
-        public static void ViewInTable(Book[] books, DataGrid table) {
-            
+        /// <summary>
+        /// Вывод всех данных из массива объектов Book в таблицу
+        /// </summary>
+        /// <param name="books">массив книг</param>
+        /// <param name="table">таблица в окне</param>
+        public static void ViewInTable(Book[] books, DataGridView table) {
+            table.RowCount = books.Length;
+            table.ColumnCount = 6;
+            for (int i = 0; i < books.Length; i++)
+            {
+                table[0, i].Value = books[i].inventoryNumber.ToString();
+                table[1, i].Value = ByteArrayToString(books[i].author);
+                table[2, i].Value = ByteArrayToString(books[i].nameOfBook);
+                table[3, i].Value = ByteArrayToString(books[i].izdatelstvo);
+                table[4, i].Value = books[i].year.ToString();
+                table[5, i].Value = books[i].pages.ToString();
+            }
         }
 
-        //поиск в бинарном файле записей
+        //!!!метод поиска в бинарном файле записей
         public static Book[] FindBooks(string filename)
         {
             Book[] books = new Book[10];
+
+
             return books;
         }
 
-        //
+        /// <summary>
+        /// Поиск в бинарном файле записей, удовлетворяющих критерию
+        /// </summary>
+        /// <param name="filename">Путь к файлу</param>
+        /// <param name="authorToFind">Имя автора</param>
+        /// <returns></returns>
+        public static Book[] FindBooksWithAuthor(string filename, string authorToFind)
+        {
+            //изъять все книги из файла
+            Book[] allBooks = FindBooks(filename);
 
+            //подсчитать кол-во книг с указанным автороом
+            int authorBooksCount = 0;
+            foreach (Book book in allBooks)
+            {
+                if (ByteArrayToString(book.author) == authorToFind) authorBooksCount++;
+            }
+
+            //создать массив с книгами с указанным автором
+            Book[] authorBooks = new Book[authorBooksCount];
+            authorBooksCount = 0;
+            foreach (Book book in allBooks)
+            {
+                if (ByteArrayToString(book.author) == authorToFind)
+                {
+                    authorBooks[authorBooksCount] = book;
+                    authorBooksCount++;
+                }   
+            }
+
+            //вернуть массив с найденными книгами
+            return authorBooks;
+        }
+
+
+        //!!!переделать: корректировка записи не с начала не работает
         /// <summary>
         /// Корректировка записи об объекте Book в файле
         /// </summary>
@@ -149,7 +209,7 @@ namespace Лаб_14
         }
         
         /// <summary>
-        /// Метод сравнения объектов Book
+        /// Сравнение книг по кол-ву страниц
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>

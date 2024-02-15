@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Лаб_14
 {
     public partial class Form1 : Form
     {
-        private string filename = "E://College//Last_courses//3rd_course//Прикладное Программирование (C#)//Программы//Лаб_14//TheFile.txt";
+        private string filename = Path.GetFullPath(Directory.GetCurrentDirectory() + "//..//..//TestFiles//TheFile.txt");
 
         /// <summary>
         /// Конструктор формы
@@ -35,7 +36,7 @@ namespace Лаб_14
         {
             Book addedbook3 = new Book(123, "A", "N", "I", 2000, 150);
             //addedbook.Add(filename);
-            addedbook3.Correct(filename, sizeof(int) * 3 + Book.max_length * 3);
+            addedbook3.Correct(filename, 0);
         }
     }
 }
